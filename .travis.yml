@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t t-shikuro/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true t-shikuro/docker-react npm run test
